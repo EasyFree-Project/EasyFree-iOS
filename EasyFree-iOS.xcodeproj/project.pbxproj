@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		895AB05C25414ED700DBD9FD /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895AB05B25414ED700DBD9FD /* CartViewController.swift */; };
+		895AB05F25414EE200DBD9FD /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895AB05E25414EE200DBD9FD /* CameraViewController.swift */; };
+		895AB06225414EFA00DBD9FD /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895AB06125414EFA00DBD9FD /* ItemListViewController.swift */; };
 		897C5888254036C6006832B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897C5887254036C6006832B3 /* AppDelegate.swift */; };
 		897C588A254036C6006832B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897C5889254036C6006832B3 /* SceneDelegate.swift */; };
 		897C588F254036C6006832B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 897C588D254036C6006832B3 /* Main.storyboard */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		895AB05B25414ED700DBD9FD /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		895AB05E25414EE200DBD9FD /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		895AB06125414EFA00DBD9FD /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		897C5884254036C6006832B3 /* EasyFree-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EasyFree-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		897C5887254036C6006832B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		897C5889254036C6006832B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,9 @@
 				897C5887254036C6006832B3 /* AppDelegate.swift */,
 				897C5889254036C6006832B3 /* SceneDelegate.swift */,
 				897C588D254036C6006832B3 /* Main.storyboard */,
+				895AB05B25414ED700DBD9FD /* CartViewController.swift */,
+				895AB05E25414EE200DBD9FD /* CameraViewController.swift */,
+				895AB06125414EFA00DBD9FD /* ItemListViewController.swift */,
 				897C589D25403B47006832B3 /* LoginViewController.swift */,
 				897C58A025403B58006832B3 /* SignupViewController.swift */,
 				897C5890254036C9006832B3 /* Assets.xcassets */,
@@ -141,9 +150,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				897C589E25403B47006832B3 /* LoginViewController.swift in Sources */,
+				895AB06225414EFA00DBD9FD /* ItemListViewController.swift in Sources */,
 				897C5888254036C6006832B3 /* AppDelegate.swift in Sources */,
+				895AB05C25414ED700DBD9FD /* CartViewController.swift in Sources */,
 				897C58A125403B58006832B3 /* SignupViewController.swift in Sources */,
 				897C588A254036C6006832B3 /* SceneDelegate.swift in Sources */,
+				895AB05F25414EE200DBD9FD /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
