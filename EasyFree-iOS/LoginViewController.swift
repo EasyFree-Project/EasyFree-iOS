@@ -27,13 +27,17 @@ class LoginViewController: UIViewController {
         }
         
         if isValidUserName(userName: userName) && isValidPassword(password: password) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
-
-            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+            moveToMainView()
         } else {
             loginFailAlert()
         }
+    }
+    
+    func moveToMainView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
     }
 
     func loginFailAlert() {
