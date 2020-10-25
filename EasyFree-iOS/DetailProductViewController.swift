@@ -20,10 +20,6 @@ class DetailProductViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func close(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     func updateUI() {
         if let productInfo = viewModel.productInfo {
             imgView.image = productInfo.image
