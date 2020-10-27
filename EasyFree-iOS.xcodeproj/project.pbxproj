@@ -19,9 +19,14 @@
 		897C589E25403B47006832B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897C589D25403B47006832B3 /* LoginViewController.swift */; };
 		897C58A125403B58006832B3 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897C58A025403B58006832B3 /* SignupViewController.swift */; };
 		898D9C16254331CB003ED893 /* DetailProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898D9C15254331CB003ED893 /* DetailProductViewController.swift */; };
+		898D9C1A25469F00003ED893 /* CartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898D9C1925469F00003ED893 /* CartInfo.swift */; };
+		CBBA115D7345FB5EB627A73E /* Pods_EasyFree_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C22C1F912CA00893CE6DA57 /* Pods_EasyFree_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34AD3F7B39CC249FA798168F /* Pods-EasyFree-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyFree-iOS.debug.xcconfig"; path = "Target Support Files/Pods-EasyFree-iOS/Pods-EasyFree-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		5C22C1F912CA00893CE6DA57 /* Pods_EasyFree_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyFree_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		815494E3BE942DAEAAA02F9E /* Pods-EasyFree-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyFree-iOS.release.xcconfig"; path = "Target Support Files/Pods-EasyFree-iOS/Pods-EasyFree-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		895AB05B25414ED700DBD9FD /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		895AB05E25414EE200DBD9FD /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		895AB06125414EFA00DBD9FD /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +41,7 @@
 		897C589D25403B47006832B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		897C58A025403B58006832B3 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		898D9C15254331CB003ED893 /* DetailProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductViewController.swift; sourceTree = "<group>"; };
+		898D9C1925469F00003ED893 /* CartInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +49,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBBA115D7345FB5EB627A73E /* Pods_EasyFree_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		866B79BF60EDF2B697AEB967 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				34AD3F7B39CC249FA798168F /* Pods-EasyFree-iOS.debug.xcconfig */,
+				815494E3BE942DAEAAA02F9E /* Pods-EasyFree-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		897C587B254036C5006832B3 = {
 			isa = PBXGroup;
 			children = (
 				897C5886254036C6006832B3 /* EasyFree-iOS */,
 				897C5885254036C6006832B3 /* Products */,
+				866B79BF60EDF2B697AEB967 /* Pods */,
+				C1AB427FE5DB2F25905B3A1D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +92,7 @@
 				897C588D254036C6006832B3 /* Main.storyboard */,
 				898D9C15254331CB003ED893 /* DetailProductViewController.swift */,
 				895AB05B25414ED700DBD9FD /* CartViewController.swift */,
+				898D9C1925469F00003ED893 /* CartInfo.swift */,
 				895AB05E25414EE200DBD9FD /* CameraViewController.swift */,
 				895AB06125414EFA00DBD9FD /* ProductViewController.swift */,
 				895AB06725429EB600DBD9FD /* ProductInfo.swift */,
@@ -85,6 +105,14 @@
 			path = "EasyFree-iOS";
 			sourceTree = "<group>";
 		};
+		C1AB427FE5DB2F25905B3A1D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C22C1F912CA00893CE6DA57 /* Pods_EasyFree_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -92,9 +120,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 897C5898254036C9006832B3 /* Build configuration list for PBXNativeTarget "EasyFree-iOS" */;
 			buildPhases = (
+				B4FEFAE66B0982BF1A36098D /* [CP] Check Pods Manifest.lock */,
 				897C5880254036C6006832B3 /* Sources */,
 				897C5881254036C6006832B3 /* Frameworks */,
 				897C5882254036C6006832B3 /* Resources */,
+				3E1012C6E53091BAD20AFE35 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -150,12 +180,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3E1012C6E53091BAD20AFE35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyFree-iOS/Pods-EasyFree-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyFree-iOS/Pods-EasyFree-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyFree-iOS/Pods-EasyFree-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4FEFAE66B0982BF1A36098D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyFree-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		897C5880254036C6006832B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				897C589E25403B47006832B3 /* LoginViewController.swift in Sources */,
+				898D9C1A25469F00003ED893 /* CartInfo.swift in Sources */,
 				895AB06225414EFA00DBD9FD /* ProductViewController.swift in Sources */,
 				897C5888254036C6006832B3 /* AppDelegate.swift in Sources */,
 				895AB06825429EB600DBD9FD /* ProductInfo.swift in Sources */,
@@ -307,6 +380,7 @@
 		};
 		897C5899254036C9006832B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34AD3F7B39CC249FA798168F /* Pods-EasyFree-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -325,6 +399,7 @@
 		};
 		897C589A254036C9006832B3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 815494E3BE942DAEAAA02F9E /* Pods-EasyFree-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

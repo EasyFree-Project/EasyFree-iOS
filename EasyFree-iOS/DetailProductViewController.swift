@@ -12,12 +12,34 @@ class DetailProductViewController: UIViewController {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var stepper: UIStepper!
     
     let viewModel = DetailProductViewModel()
 
     override func viewDidLoad() {
         updateUI()
+        stepper.wraps = false
+        stepper.autorepeat = false
+        stepper.maximumValue = 99
         super.viewDidLoad()
+    }
+
+    @IBAction func changeValue(_ sender: UIStepper) {
+        valueLabel.text = Int(sender.value).description
+    }
+    
+    @IBAction func addToCart(_ sender: Any) {
+        if let productInfo = viewModel.productInfo {
+            let name = productInfo.name
+            let price = productInfo.price
+            let count = Int(valueLabel.text!)
+            
+            let newProduct = CartInfo(name: name, price: price, count: count!)
+            CartViewModel.cartInfoList.append(newProduct)
+        }
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     func updateUI() {

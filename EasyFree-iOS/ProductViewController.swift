@@ -57,16 +57,16 @@ class ProductViewController: UIViewController, UICollectionViewDataSource, UICol
 
 class ProductViewModel {
     let productInfoList: [ProductInfo] = [
-        ProductInfo(name: "item", price: 1000),
-        ProductInfo(name: "item", price: 2000),
-        ProductInfo(name: "item", price: 3000),
-        ProductInfo(name: "item", price: 4000),
-        ProductInfo(name: "item", price: 5000),
-        ProductInfo(name: "item", price: 6000),
-        ProductInfo(name: "item", price: 7000),
-        ProductInfo(name: "item", price: 8000),
-        ProductInfo(name: "item", price: 9000),
-        ProductInfo(name: "item", price: 10000)
+        ProductInfo(name: "item1", price: 1000),
+        ProductInfo(name: "item2", price: 2000),
+        ProductInfo(name: "item3", price: 3000),
+        ProductInfo(name: "item4", price: 4000),
+        ProductInfo(name: "item5", price: 5000),
+        ProductInfo(name: "item6", price: 6000),
+        ProductInfo(name: "item7", price: 7000),
+        ProductInfo(name: "item8", price: 8000),
+        ProductInfo(name: "item9", price: 9000),
+        ProductInfo(name: "item10", price: 10000)
     ]
     
     var numOfProductInfoList: Int {

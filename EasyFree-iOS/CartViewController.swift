@@ -7,23 +7,63 @@
 
 import UIKit
 
-class CartViewController: UIViewController {
+class CartViewController: UIViewController, UITableViewDataSource {
+    
+    @IBOutlet weak var cartTableVeiw: UITableView!
+    
+    let viewModel = CartViewModel()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        cartTableVeiw.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.cartTableVeiw.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func purchase(_ sender: Any) {
+        CartViewModel.cartInfoList.removeAll()
+        cartTableVeiw.reloadData()
     }
-    */
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numOfCartInfoList
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell", for: indexPath) as? CartCell else {
+            return UITableViewCell()
+        }
+        
+        let info = viewModel.cartInfo(at: indexPath.row)
+        cell.updateUI(info)
+        return cell
+    }
+}
 
+class CartViewModel {
+    static var cartInfoList: [CartInfo] = []
+    
+    var numOfCartInfoList: Int {
+        return CartViewModel.cartInfoList.count
+    }
+    
+    func cartInfo(at index: Int) -> CartInfo {
+        return CartViewModel.cartInfoList[index]
+    }
+}
+
+class CartCell: UITableViewCell {
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
+    
+    func updateUI(_ cartInfo: CartInfo) {
+        imgView.image = cartInfo.image
+        nameLabel.text = cartInfo.name
+        priceLabel.text = "\(cartInfo.price)원"
+        countLabel.text = "\(cartInfo.count)개"
+    }
 }
