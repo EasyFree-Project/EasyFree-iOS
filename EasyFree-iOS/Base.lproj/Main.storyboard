@@ -318,23 +318,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2z-pX-arQ">
-                                <rect key="frame" x="155" y="182" width="60" height="21"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vZj-5U-fdG" customClass="PreviewView" customModule="EasyFree_iOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="132" width="390" height="491"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aa7-pZ-sfT">
+                                        <rect key="frame" x="153" y="461" width="53" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="capture"/>
+                                        <connections>
+                                            <action selector="capturePhoto:" destination="YbM-8h-CsG" eventType="touchUpInside" id="fF3-Qh-0us"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iUO-Vz-xog"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" selectedImage="camera" catalog="system" systemItem="search" id="7qG-Y7-KhJ"/>
                     <navigationItem key="navigationItem" id="yFP-eE-8Zu"/>
+                    <connections>
+                        <outlet property="captureButton" destination="aa7-pZ-sfT" id="inK-nD-h1J"/>
+                        <outlet property="previewView" destination="vZj-5U-fdG" id="gQR-uI-eZc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Uh-gH-Wa9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3255" y="100"/>
+            <point key="canvasLocation" x="3253.8461538461538" y="99.526066350710892"/>
         </scene>
         <!--Cart View Controller-->
         <scene sceneID="fOW-tJ-mSf">
