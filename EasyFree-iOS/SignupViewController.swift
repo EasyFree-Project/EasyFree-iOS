@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SignupViewController: UIViewController {
 
@@ -49,14 +50,37 @@ class SignupViewController: UIViewController {
             return
         }
         
-        if isUserNameAvailable && (userName == availableUserName) {
-            if (password == confirmPassword) && (password != "") {
-                signupSuccessAlert()
-            } else {
-                checkPasswordAlert()
+        if (password == confirmPassword) && (password != "") {
+            let headers: HTTPHeaders = [
+                    "Content-Type": "application/json"
+                ]
+            
+            let params = [
+                "username" : userName,
+                "password" : password
+            ]
+
+            let request = AF.request("http://54.180.153.44:3003/auth/register", method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
+
+            request.responseJSON { (response: DataResponse) in
+                switch(response.result)
+                {
+                case .success(let value):
+                    guard let json = value as? [String: Any],
+                          let _ = json["data"] as? [String: Any]
+                    else {
+                        self.notAvailableUserNameAlert()
+                        return
+                    }
+                    self.signupSuccessAlert()
+                    
+                case .failure(let error):
+                    print(error)
+                    break
+                }
             }
         } else {
-            checkUserNameAlert()
+            checkPasswordAlert()
         }
     }
     
