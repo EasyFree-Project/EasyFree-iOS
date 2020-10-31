@@ -31,11 +31,12 @@ class DetailProductViewController: UIViewController {
     
     @IBAction func addToCart(_ sender: Any) {
         if let productInfo = viewModel.productInfo {
-            let name = productInfo.name
-            let price = productInfo.price
+            let name = productInfo.productName
+            let price = productInfo.productPrice
             let count = Int(valueLabel.text!)
+            let imageURL = productInfo.imageURL
             
-            let newProduct = CartInfo(name: name, price: price, count: count!)
+            let newProduct = CartInfo(name: name, price: price, count: count!, imageURL: imageURL)
             CartViewModel.cartInfoList.append(newProduct)
         }
         
@@ -44,9 +45,10 @@ class DetailProductViewController: UIViewController {
     
     func updateUI() {
         if let productInfo = viewModel.productInfo {
-            imgView.image = productInfo.image
-            nameLabel.text = productInfo.name
-            priceLabel.text = "\(productInfo.price)"
+            let url = URL(string: productInfo.imageURL)
+            imgView.kf.setImage(with: url)
+            nameLabel.text = productInfo.productName
+            priceLabel.text = "\(productInfo.productPrice)"
         }
     }
 }

@@ -195,14 +195,14 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EasyFree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTA-bI-1Fp">
-                                                    <rect key="frame" x="59" y="151" width="70" height="21"/>
+                                                    <rect key="frame" x="19" y="151" width="156" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAg-M3-gwr">
-                                                    <rect key="frame" x="59" y="180" width="70" height="21"/>
+                                                    <rect key="frame" x="19" y="180" width="150" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -212,9 +212,9 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="188" height="224"/>
                                         <connections>
-                                            <outlet property="imgView" destination="waO-Sb-QBU" id="oLe-lu-lfy"/>
-                                            <outlet property="nameLabel" destination="zTA-bI-1Fp" id="zJy-LM-WRs"/>
-                                            <outlet property="priceLabel" destination="xAg-M3-gwr" id="w9E-Se-fsN"/>
+                                            <outlet property="imgView" destination="waO-Sb-QBU" id="pO0-cn-HWr"/>
+                                            <outlet property="nameLabel" destination="zTA-bI-1Fp" id="OTv-zn-OYP"/>
+                                            <outlet property="priceLabel" destination="xAg-M3-gwr" id="YTN-51-LaS"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -229,6 +229,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="yUh-u4-NJf"/>
                     <connections>
+                        <outlet property="productCollectionView" destination="mpW-Bg-AcQ" id="Dpc-y2-4sp"/>
                         <segue destination="nPF-K3-ZqR" kind="show" identifier="showDetail" id="asx-ZA-Ei2"/>
                     </connections>
                 </viewController>
@@ -249,14 +250,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EasyFree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcg-cr-1gf">
-                                <rect key="frame" x="160" y="392" width="70" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vt8-yt-yWD">
-                                <rect key="frame" x="166" y="457" width="59" height="21"/>
+                                <rect key="frame" x="75" y="392" width="240" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -284,6 +278,13 @@
                                     <action selector="addToCart:" destination="nPF-K3-ZqR" eventType="touchUpInside" id="OVY-ed-BVB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vt8-yt-yWD">
+                                <rect key="frame" x="75" y="421" width="150" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sY1-ts-zBi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -372,7 +373,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNr-ks-h3K">
-                                                    <rect key="frame" x="165" y="98" width="89" height="21"/>
+                                                    <rect key="frame" x="165" y="98" width="153" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -386,9 +387,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EasyFree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPa-Ms-vIo">
-                                                    <rect key="frame" x="165" y="29" width="70" height="21"/>
+                                                    <rect key="frame" x="165" y="29" width="204" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

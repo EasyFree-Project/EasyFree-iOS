@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CartViewController: UIViewController, UITableViewDataSource {
     
@@ -61,9 +62,24 @@ class CartCell: UITableViewCell {
     @IBOutlet weak var countLabel: UILabel!
     
     func updateUI(_ cartInfo: CartInfo) {
-        imgView.image = cartInfo.image
+        let url = URL(string: cartInfo.imageURL)
+        imgView.kf.setImage(with: url)
         nameLabel.text = cartInfo.name
         priceLabel.text = "\(cartInfo.price)원"
         countLabel.text = "\(cartInfo.count)개"
+    }
+}
+
+struct CartInfo {
+    let name: String
+    let price: Int
+    let count: Int
+    let imageURL: String
+
+    init(name: String, price: Int, count: Int, imageURL: String) {
+        self.name = name
+        self.price = price
+        self.count = count
+        self.imageURL = imageURL
     }
 }
