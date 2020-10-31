@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: UIViewController {
 
@@ -19,6 +20,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
+        
         guard let userName = userNameField.text else {
             return
         }
@@ -26,10 +28,36 @@ class LoginViewController: UIViewController {
             return
         }
         
-        if isValidUserName(userName: userName) && isValidPassword(password: password) {
-            moveToMainView()
-        } else {
-            loginFailAlert()
+        let headers: HTTPHeaders = [
+                "Content-Type": "application/json"
+            ]
+        
+        let params = [
+            "username" : userName,
+            "password" : password
+        ]
+
+        let request = AF.request("http://54.180.153.44:3003/auth/login", method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
+
+        request.responseJSON { (response: DataResponse) in
+            switch(response.result)
+            {
+            case .success(let value):
+                guard let json = value as? [String: Any],
+                      let data = json["data"] as? [String: Any],
+                      let memberIdx = data["member_idx"] as? Int
+                else {
+                    self.loginFailAlert()
+                    return
+                }
+                
+                UserDefaults.standard.set(memberIdx, forKey: "memberIdx")
+                self.moveToMainView()
+
+            case .failure(let error):
+                print(error)
+                break
+            }
         }
     }
     
@@ -46,25 +74,4 @@ class LoginViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
-    
-    func isValidUserName(userName: String) -> Bool {
-        let testUserName = "o"
-        
-        if userName == testUserName {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func isValidPassword(password: String) -> Bool {
-        let testPassword = "o"
-        
-        if password == testPassword {
-            return true
-        } else {
-            return false
-        }
-    }
-    
 }
