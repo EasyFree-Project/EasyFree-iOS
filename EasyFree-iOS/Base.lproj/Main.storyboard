@@ -101,14 +101,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eb5-Dg-jLb">
-                                <rect key="frame" x="165" y="391" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Check"/>
-                                <connections>
-                                    <action selector="checkUserName:" destination="rZl-lo-nYF" eventType="touchUpInside" id="0wr-Gt-Wg0"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqc-VO-irh">
                                 <rect key="frame" x="163" y="593" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -123,7 +115,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="gzh-3d-puG"/>
                     <connections>
-                        <outlet property="checkButton" destination="eb5-Dg-jLb" id="2Gh-rs-zPq"/>
                         <outlet property="confirmPasswordField" destination="I8t-Lm-40y" id="bBF-Xz-LfI"/>
                         <outlet property="passwordField" destination="l1D-zE-7iE" id="Ils-Rq-4mG"/>
                         <outlet property="signupButton" destination="eqc-VO-irh" id="CeI-A7-eEj"/>
