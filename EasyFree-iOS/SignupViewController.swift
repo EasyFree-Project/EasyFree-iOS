@@ -19,6 +19,10 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    @IBAction func backToLogin(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func signup(_ sender: Any) {
         guard let userName = userNameField.text else {
             return
