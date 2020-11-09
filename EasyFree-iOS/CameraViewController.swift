@@ -7,6 +7,7 @@
 import UIKit
 import AVFoundation
 import Photos
+import Alamofire
 
 class CameraViewController: UIViewController {
     let captureSession = AVCaptureSession()
@@ -20,11 +21,6 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var captureButton: UIButton!
     
     var productPosition: [ProductPosition] = [
-        ProductPosition(x1Axis: 41, x2Axis: 103, y1Axis: 427, y2Axis: 489, categoryNumber: 6000095829),
-        ProductPosition(x1Axis: 157, x2Axis: 209, y1Axis: 255, y2Axis: 317, categoryNumber: 6000096294),
-        ProductPosition(x1Axis: 227, x2Axis: 289, y1Axis: 155, y2Axis: 217, categoryNumber: 6000096294),
-        ProductPosition(x1Axis: 27, x2Axis: 89, y1Axis: 105, y2Axis: 167, categoryNumber: 6000096294),
-        ProductPosition(x1Axis: 27, x2Axis: 89, y1Axis: 355, y2Axis: 417, categoryNumber: 6000096294)
     ]
     
     override var prefersStatusBarHidden: Bool {
@@ -51,6 +47,8 @@ class CameraViewController: UIViewController {
     }
     
     @IBAction func recapturePhoto(_ sender: Any) {
+        self.productPosition.removeAll()
+        
         for view in self.previewView.subviews{
             view.removeFromSuperview()
         }
@@ -59,15 +57,63 @@ class CameraViewController: UIViewController {
     
     func sendPhoto(image: UIImage) {
         stopSession()
+        
+        let headers: HTTPHeaders = [
+                "Content-Type": "application/json"
+            ]
+        
+        let request = AF.upload(multipartFormData: { MultipartFormData in
+            MultipartFormData.append(image.jpegData(compressionQuality: 0.5)!, withName: "productImg", fileName: "image.jpeg", mimeType: "image/jpeg")
+        }, to: "http://220.87.55.135:3003/model", method: .post, headers: headers)
+        
+        request.responseJSON { (response: DataResponse) in
+            switch(response.result)
+            {
+            case .success(let value):
+                guard let json = value as? [String: Any],
+                let data = json["data"] as? [String: Any],
+                let result = data["result"] as? [String]
+                else {
+                    print("검출된 물품이 없습니다")
+                    return
+                }
+                
+                print(result)
+                
+                for i in 0..<result.count {
+                    let info: [String] = result[i].split(separator: " ").map(String.init)
+
+                    let pos: ProductPosition = ProductPosition(x1Axis: Double(info[0])!, x2Axis: Double(info[1])!, y1Axis: Double(info[2])!, y2Axis: Double(info[3])!, categoryNumber: Int(info[4])!)
+
+                    self.productPosition.append(pos)
+                }
+                self.showButtons()
+                
+            case .failure(let error):
+                print(error)
+                return
+            }
+        }
+        
         showButtons()
     }
     
     func showButtons () {
-        for i in  0..<productPosition.count {
-            let productButton = UIButton(frame: CGRect(x: productPosition[i].x1Axis, y: productPosition[i].y1Axis, width: productPosition[i].x2Axis - productPosition[i].x1Axis, height: productPosition[i].y2Axis - productPosition[i].y1Axis))
+        for i in 0..<self.productPosition.count {
+            
+            let x1pos = Double(previewView.bounds.width) * self.productPosition[i].x1Axis / 512
+            let x2pos = Double(previewView.bounds.width) * self.productPosition[i].x2Axis / 512
+            let y1pos = Double(previewView.bounds.height) * self.productPosition[i].y1Axis / 512
+            let y2pos = Double(previewView.bounds.height) * self.productPosition[i].y2Axis / 512
+            let width = x2pos - x1pos
+            let height = y2pos - y1pos
+            let category = self.productPosition[i].categoryNumber
+            
+            let productButton = UIButton(frame: CGRect(x: x1pos, y: y1pos, width: width, height: height))
+            
             productButton.layer.borderColor = UIColor.black.cgColor
             productButton.layer.borderWidth = 3
-            productButton.setTitle("button\(i)", for: .normal)
+            productButton.setTitle("\(category)", for: .normal)
             productButton.setTitleColor(UIColor.clear, for: .normal)
             productButton.addTarget(self, action: #selector(productButtonClicked), for: .touchUpInside)
             
@@ -76,6 +122,7 @@ class CameraViewController: UIViewController {
     }
     
     @objc func productButtonClicked(_ sender: UIButton) {
+        UserDefaults.standard.set(sender.currentTitle!, forKey: "categotyNumber")
         print(sender.currentTitle!)
     }
 }
@@ -153,14 +200,14 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
     }
 }
 
-struct ProductPosition: Codable {
-    let x1Axis: Int
-    let x2Axis: Int
-    let y1Axis: Int
-    let y2Axis: Int
+struct ProductPosition {
+    let x1Axis: Double
+    let x2Axis: Double
+    let y1Axis: Double
+    let y2Axis: Double
     let categoryNumber: Int
-    
-    init(x1Axis: Int, x2Axis: Int, y1Axis: Int, y2Axis: Int, categoryNumber: Int) {
+
+    init(x1Axis: Double, x2Axis: Double, y1Axis: Double, y2Axis: Double, categoryNumber: Int) {
         self.x1Axis = x1Axis
         self.x2Axis = x2Axis
         self.y1Axis = y1Axis
@@ -168,4 +215,3 @@ struct ProductPosition: Codable {
         self.categoryNumber = categoryNumber
     }
 }
-

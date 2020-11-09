@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
             "password" : password
         ]
 
-        let request = AF.request("http://54.180.153.44:3003/auth/login", method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
+        let request = AF.request("http://220.87.55.135:3003/auth/login", method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
 
         request.responseJSON { (response: DataResponse) in
             switch(response.result)

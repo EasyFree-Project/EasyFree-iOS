@@ -12,8 +12,16 @@ class DetailProductViewController: UIViewController {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var nutrientLabel: UILabel!
+    @IBOutlet weak var capacityLabel: UILabel!
+    @IBOutlet weak var producerLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
+    
+    @IBAction func close(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     let viewModel = DetailProductViewModel()
 
@@ -48,7 +56,11 @@ class DetailProductViewController: UIViewController {
             let url = URL(string: productInfo.imageURL)
             imgView.kf.setImage(with: url)
             nameLabel.text = productInfo.productName
-            priceLabel.text = "\(productInfo.productPrice)"
+            priceLabel.text = "\(productInfo.productPrice) 원"
+            contentLabel.text = productInfo.productContent
+            producerLabel.text = "원산지: \(productInfo.producerLocation)"
+            capacityLabel.text = "용량: \(productInfo.capacitySize)"
+            nutrientLabel.text = "영양성분: \(productInfo.nutrient)"
         }
     }
 }

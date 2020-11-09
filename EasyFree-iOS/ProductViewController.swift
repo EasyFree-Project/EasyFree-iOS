@@ -37,7 +37,9 @@ class ProductViewController: UIViewController {
     }
     
     func updateProduct() {
-        SearchProductList.search(categoryNumber: 6000095799) { products in
+        let categotyNumber = UserDefaults.standard.value(forKey: "categoryNumber")
+        
+        SearchProductList.search(categoryNumber: categotyNumber as! Int) { products in
             DispatchQueue.main.async {
                 self.productInfoList = products
                 self.productCollectionView.reloadData()
@@ -61,7 +63,7 @@ extension ProductViewController: UICollectionViewDataSource {
         let url = URL(string: product.imageURL)
         cell.imgView.kf.setImage(with: url)
         cell.nameLabel.text = product.productName
-        cell.priceLabel.text = "\(product.productPrice)"
+        cell.priceLabel.text = "\(product.productPrice)원"
         return cell
     }
 }
@@ -95,7 +97,7 @@ class SearchProductList {
     static func search(categoryNumber: Int, completion: @escaping ([ProductInfo]) -> Void) {
         
         let session = URLSession(configuration: .default)
-        let urlComponents = URLComponents(string: "http://54.180.153.44:3003/product/\(categoryNumber)")!
+        let urlComponents = URLComponents(string: "http://220.87.55.135:3003/product/\(categoryNumber)")!
         
         let requestURL = urlComponents.url!
         
@@ -162,7 +164,7 @@ struct ProductInfo: Codable {
     let reviewCount: Int
     let imageURL: String
     let categoryNumber: String
-    
+
     enum CodingKeys: String, CodingKey {
         case productNumber = "product_number"
         case productName = "product_name"
@@ -177,3 +179,4 @@ struct ProductInfo: Codable {
         case categoryNumber = "category_number"
     }
 }
+
